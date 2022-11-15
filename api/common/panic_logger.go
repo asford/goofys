@@ -148,6 +148,10 @@ func (fs FusePanicLogger) SetXattr(ctx context.Context, op *fuseops.SetXattrOp) 
 	defer LogPanic(&err)
 	return fs.Fs.SetXattr(ctx, op)
 }
+func (fs FusePanicLogger) BatchForget(ctx context.Context, op *fuseops.BatchForgetOp) (err error) {
+	defer LogPanic(&err)
+	return fs.Fs.BatchForget(ctx, op)
+}
 
 func (fs FusePanicLogger) Destroy() {
 	fs.Fs.Destroy()
